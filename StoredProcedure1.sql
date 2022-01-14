@@ -1,9 +1,8 @@
 
-CREATE PROCEDURE  SelectPerioxi @id_περιοχή int
+CREATE PROCEDURE  SelectPerioxi @id_Ο€ΞµΟΞΉΞΏΟ‡Ξ® int
 As
-SELECT id_περιοχή,ονομασία FROM Περιοχή where ανήκει = @id_περιοχή
+SELECT id_Ο€ΞµΟΞΉΞΏΟ‡Ξ®,ΞΏΞ½ΞΏΞΌΞ±ΟƒΞ―Ξ± FROM Ξ ΞµΟΞΉΞΏΟ‡Ξ® where Ξ±Ξ½Ξ®ΞΊΞµΞΉ = @id_Ο€ΞµΟΞΉΞΏΟ‡Ξ®
 GO
--- ΕΝΑ ΠΑΡΑΔΕΙΓΜΑ--
-exec SelectPerioxi @id_περιοχή = 14102;
-
+-- Ξ•ΞΞ‘ Ξ Ξ‘Ξ΅Ξ‘Ξ”Ξ•Ξ™Ξ“ΞΞ‘--
+exec SelectPerioxi @id_Ο€ΞµΟΞΉΞΏΟ‡Ξ® = 14102;
 
