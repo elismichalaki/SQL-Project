@@ -2,25 +2,25 @@ CREATE PROCEDURE Estimation (@id int,@hmerominia1 date,@hmerominia2 date)
 as
 begin
 set NOCOUNT ON;
-DECLARE @id_εκτίμηση int 
-DECLARE @id_ακίνητο int
-DECLARE @διεύθυνση char(50)
-DECLARE @ημερομηνία date 
-DECLARE @τιμή int
+DECLARE @id_ΞµΞΊΟ„Ξ―ΞΌΞ·ΟƒΞ· int 
+DECLARE @id_Ξ±ΞΊΞ―Ξ½Ξ·Ο„ΞΏ int
+DECLARE @Ξ΄ΞΉΞµΟΞΈΟ…Ξ½ΟƒΞ· char(50)
+DECLARE @Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―Ξ± date 
+DECLARE @Ο„ΞΉΞΌΞ® int
 
 DECLARE existingEstimations cursor for
-Select e.id_εκτίμηση , a.id_ακίνητο, a.διεύθυνση, e.ημερομηνία , e.τιμή 
-from Εκτίμηση as e, Ακίνητο as a
+Select e.id_ΞµΞΊΟ„Ξ―ΞΌΞ·ΟƒΞ· , a.id_Ξ±ΞΊΞ―Ξ½Ξ·Ο„ΞΏ, a.Ξ΄ΞΉΞµΟΞΈΟ…Ξ½ΟƒΞ·, e.Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―Ξ± , e.Ο„ΞΉΞΌΞ® 
+from Ξ•ΞΊΟ„Ξ―ΞΌΞ·ΟƒΞ· as e, Ξ‘ΞΊΞ―Ξ½Ξ·Ο„ΞΏ as a
 open existingEstimations 
 print 'estimations made between this dates:' 
-Select e.id_εκτίμηση , a.id_ακίνητο, a.διεύθυνση, e.ημερομηνία , e.τιμή 
-from Εκτίμηση as e
-join Ακίνητο as a on e.id_ακίνητο = a.id_ακίνητο 
-where id = @id and e.ημερομηνία between @hmerominia1 and @hmerominia2
-fetch next from existingEstimations  into @id_εκτίμηση,@id_ακίνητο,@διεύθυνση,@ημερομηνία,@τιμή
+Select e.id_ΞµΞΊΟ„Ξ―ΞΌΞ·ΟƒΞ· , a.id_Ξ±ΞΊΞ―Ξ½Ξ·Ο„ΞΏ, a.Ξ΄ΞΉΞµΟΞΈΟ…Ξ½ΟƒΞ·, e.Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―Ξ± , e.Ο„ΞΉΞΌΞ® 
+from Ξ•ΞΊΟ„Ξ―ΞΌΞ·ΟƒΞ· as e
+join Ξ‘ΞΊΞ―Ξ½Ξ·Ο„ΞΏ as a on e.id_Ξ±ΞΊΞ―Ξ½Ξ·Ο„ΞΏ = a.id_Ξ±ΞΊΞ―Ξ½Ξ·Ο„ΞΏ 
+where id = @id and e.Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―Ξ± between @hmerominia1 and @hmerominia2
+fetch next from existingEstimations  into @id_ΞµΞΊΟ„Ξ―ΞΌΞ·ΟƒΞ·,@id_Ξ±ΞΊΞ―Ξ½Ξ·Ο„ΞΏ,@Ξ΄ΞΉΞµΟΞΈΟ…Ξ½ΟƒΞ·,@Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―Ξ±,@Ο„ΞΉΞΌΞ®
 close existingEstimations ;
 deallocate existingEstimations 
 end
 
--- ΕΝΑ ΠΑΡΑΔΕΙΓΜΑ--
+-- Ξ•ΞΞ‘ Ξ Ξ‘Ξ΅Ξ‘Ξ”Ξ•Ξ™Ξ“ΞΞ‘--
 exec Estimation @id=2306,@hmerominia1='2020-10-25',@hmerominia2='2020-11-1'
