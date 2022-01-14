@@ -1,71 +1,63 @@
 use DB39
-CREATE TABLE Περιοχή
-					(id_περιοχή INTEGER,
-					ονομασία CHAR(20),
-					πληθυσμός INTEGER,
-					μέσο_εισόδημα INTEGER ,
-					PRIMARY KEY(id_περιοχή),
-					ανήκει int )
+CREATE TABLE Ξ ΞµΟΞΉΞΏΟ‡Ξ®
+					(id_Ο€ΞµΟΞΉΞΏΟ‡Ξ® INTEGER,
+					ΞΏΞ½ΞΏΞΌΞ±ΟƒΞ―Ξ± CHAR(20),
+					Ο€Ξ»Ξ·ΞΈΟ…ΟƒΞΌΟΟ‚ INTEGER,
+					ΞΌΞ­ΟƒΞΏ_ΞµΞΉΟƒΟΞ΄Ξ·ΞΌΞ± INTEGER ,
+					PRIMARY KEY(id_Ο€ΞµΟΞΉΞΏΟ‡Ξ®),
+					Ξ±Ξ½Ξ®ΞΊΞµΞΉ int )
 					 ;
 
-CREATE TABLE Κατηγορία
-					(τύπος CHAR(20),
-					ονομασία CHAR(20)
-					PRIMARY KEY (τύπος) )
+CREATE TABLE ΞΞ±Ο„Ξ·Ξ³ΞΏΟΞ―Ξ±
+					(Ο„ΟΟ€ΞΏΟ‚ CHAR(20),
+					ΞΏΞ½ΞΏΞΌΞ±ΟƒΞ―Ξ± CHAR(20)
+					PRIMARY KEY (Ο„ΟΟ€ΞΏΟ‚) )
 				;
 
-CREATE TABLE Ακίνητο
-					(id_ακίνητο INTEGER,
-					διεύθυνση CHAR(20),
-					όροφος INTEGER,
-					μέγεθος INTEGER,
-					έτος_κατασκευής INTEGER,
-					id_περιοχή INTEGER,
-					FOREIGN KEY (id_περιοχή) REFERENCES Περιοχή,
-					PRIMARY KEY(id_ακίνητο))
+CREATE TABLE Ξ‘ΞΊΞ―Ξ½Ξ·Ο„ΞΏ
+					(id_Ξ±ΞΊΞ―Ξ½Ξ·Ο„ΞΏ INTEGER,
+					Ξ΄ΞΉΞµΟΞΈΟ…Ξ½ΟƒΞ· CHAR(20),
+					ΟΟΞΏΟ†ΞΏΟ‚ INTEGER,
+					ΞΌΞ­Ξ³ΞµΞΈΞΏΟ‚ INTEGER,
+					Ξ­Ο„ΞΏΟ‚_ΞΊΞ±Ο„Ξ±ΟƒΞΊΞµΟ…Ξ®Ο‚ INTEGER,
+					id_Ο€ΞµΟΞΉΞΏΟ‡Ξ® INTEGER,
+					FOREIGN KEY (id_Ο€ΞµΟΞΉΞΏΟ‡Ξ®) REFERENCES Ξ ΞµΟΞΉΞΏΟ‡Ξ®,
+					PRIMARY KEY(id_Ξ±ΞΊΞ―Ξ½Ξ·Ο„ΞΏ))
 					;
 
-CREATE TABLE Εκτιμητής
+CREATE TABLE Ξ•ΞΊΟ„ΞΉΞΌΞ·Ο„Ξ®Ο‚
 					   (id INTEGER,
-						όνομα CHAR(50),
-						επίθετο CHAR(50),
-						διεύθυνση CHAR(50),
-						φύλο CHAR(10),
-						ηλικία INTEGER
+						ΟΞ½ΞΏΞΌΞ± CHAR(50),
+						ΞµΟ€Ξ―ΞΈΞµΟ„ΞΏ CHAR(50),
+						Ξ΄ΞΉΞµΟΞΈΟ…Ξ½ΟƒΞ· CHAR(50),
+						Ο†ΟΞ»ΞΏ CHAR(10),
+						Ξ·Ξ»ΞΉΞΊΞ―Ξ± INTEGER
 						PRIMARY KEY (id));
-CREATE TABLE Εκτίμηση
-					(id_εκτίμηση INTEGER,
-					ημερομηνία DATE,
-					τιμή INTEGER,
-					id_ακίνητο INTEGER,
+CREATE TABLE Ξ•ΞΊΟ„Ξ―ΞΌΞ·ΟƒΞ·
+					(id_ΞµΞΊΟ„Ξ―ΞΌΞ·ΟƒΞ· INTEGER,
+					Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―Ξ± DATE,
+					Ο„ΞΉΞΌΞ® INTEGER,
+					id_Ξ±ΞΊΞ―Ξ½Ξ·Ο„ΞΏ INTEGER,
 					id INTEGER,
-					FOREIGN KEY (id_ακίνητο) REFERENCES Ακίνητο,
-					FOREIGN KEY (id) REFERENCES Εκτιμητής,
-					PRIMARY KEY(id_εκτίμηση));
+					FOREIGN KEY (id_Ξ±ΞΊΞ―Ξ½Ξ·Ο„ΞΏ) REFERENCES Ξ‘ΞΊΞ―Ξ½Ξ·Ο„ΞΏ,
+					FOREIGN KEY (id) REFERENCES Ξ•ΞΊΟ„ΞΉΞΌΞ·Ο„Ξ®Ο‚,
+					PRIMARY KEY(id_ΞµΞΊΟ„Ξ―ΞΌΞ·ΟƒΞ·));
 
-CREATE TABLE Σύνδεση 
-					(ημερομηνία CHAR(20),
-					διάρκεια INTEGER,
+CREATE TABLE Ξ£ΟΞ½Ξ΄ΞµΟƒΞ· 
+					(Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―Ξ± CHAR(20),
+					Ξ΄ΞΉΞ¬ΟΞΊΞµΞΉΞ± INTEGER,
 					id INTEGER not null,
-					FOREIGN KEY (id) REFERENCES Εκτιμητής);
+					FOREIGN KEY (id) REFERENCES Ξ•ΞΊΟ„ΞΉΞΌΞ·Ο„Ξ®Ο‚);
 
 
 
-CREATE TABLE  Κατοικία
-					(id_ακίνητο INTEGER,
-					τύπος CHAR(20),
-					αριθμός_ταυτότητας CHAR(20),
-					FOREIGN KEY (id_ακίνητο) REFERENCES Ακίνητο,
-					FOREIGN KEY (τύπος) REFERENCES Κατηγορία);
-CREATE TABLE Γραφείο
-					(id_ακίνητο INTEGER,
-					ΑΦΜ INTEGER,
-					FOREIGN KEY (id_ακίνητο) REFERENCES Ακίνητο);
-
-
-
-					
-					
-
-
-						
+CREATE TABLE  ΞΞ±Ο„ΞΏΞΉΞΊΞ―Ξ±
+					(id_Ξ±ΞΊΞ―Ξ½Ξ·Ο„ΞΏ INTEGER,
+					Ο„ΟΟ€ΞΏΟ‚ CHAR(20),
+					Ξ±ΟΞΉΞΈΞΌΟΟ‚_Ο„Ξ±Ο…Ο„ΟΟ„Ξ·Ο„Ξ±Ο‚ CHAR(20),
+					FOREIGN KEY (id_Ξ±ΞΊΞ―Ξ½Ξ·Ο„ΞΏ) REFERENCES Ξ‘ΞΊΞ―Ξ½Ξ·Ο„ΞΏ,
+					FOREIGN KEY (Ο„ΟΟ€ΞΏΟ‚) REFERENCES ΞΞ±Ο„Ξ·Ξ³ΞΏΟΞ―Ξ±);
+CREATE TABLE Ξ“ΟΞ±Ο†ΞµΞ―ΞΏ
+					(id_Ξ±ΞΊΞ―Ξ½Ξ·Ο„ΞΏ INTEGER,
+					Ξ‘Ξ¦Ξ INTEGER,
+					FOREIGN KEY (id_Ξ±ΞΊΞ―Ξ½Ξ·Ο„ΞΏ) REFERENCES Ξ‘ΞΊΞ―Ξ½Ξ·Ο„ΞΏ);
